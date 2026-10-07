@@ -1,0 +1,116 @@
+import 'dart:convert';
+
+PaymentMethodModel paymentMethodModelFromJson(String str) =>
+    PaymentMethodModel.fromJson(json.decode(str));
+
+String paymentMethodModelToJson(PaymentMethodModel data) =>
+    json.encode(data.toJson());
+
+class PaymentMethodModel {
+  final bool? success;
+  final int? code;
+  final String? message;
+  final Data? data;
+  final List<dynamic>? payload;
+
+  PaymentMethodModel({
+    this.success,
+    this.code,
+    this.message,
+    this.data,
+    this.payload,
+  });
+
+  factory PaymentMethodModel.fromJson(Map<String, dynamic> json) =>
+      PaymentMethodModel(
+        success: json["success"],
+        code: json["code"],
+        message: json["message"],
+        data: Data.fromJson(json["data"]),
+        payload: List<dynamic>.from(json["payload"].map((x) => x)),
+      );
+
+  Map<String, dynamic> toJson() => {
+    "success": success,
+    "code": code,
+    "message": message,
+    "data": data!.toJson(),
+    "payload": List<dynamic>.from(payload!.map((x) => x)),
+  };
+}
+
+class Data {
+  final List<PaymentMethod>? paymentMethods;
+
+  Data({this.paymentMethods});
+
+  factory Data.fromJson(Map<String, dynamic> json) => Data(
+    paymentMethods: List<PaymentMethod>.from(
+      json["payment_methods"].map((x) => PaymentMethod.fromJson(x)),
+    ),
+  );
+
+  Map<String, dynamic> toJson() => {
+    "payment_methods": List<dynamic>.from(
+      paymentMethods!.map((x) => x.toJson()),
+    ),
+  };
+}
+
+class PaymentMethod {
+  final int? id;
+  final String? methodName;
+  final String? bankName;
+  final String? accountHolderName;
+  final String? cardNumber;
+  final String? accountNumber;
+  final dynamic shebaNumber;
+  final String? notes;
+  final String? accountDetails;
+  final String? accountImage;
+
+  PaymentMethod({
+    this.id,
+    this.methodName,
+    this.bankName,
+    this.accountHolderName,
+    this.cardNumber,
+    this.accountNumber,
+    this.shebaNumber,
+    this.notes,
+    this.accountDetails,
+    this.accountImage,
+  });
+
+  factory PaymentMethod.fromJson(Map<String, dynamic> json) => PaymentMethod(
+    id: json["id"] == null ? null : json["id"],
+    methodName: json["method_name"] == null ? null : json["method_name"],
+    bankName: json["bank_name"] == null ? null : json["bank_name"],
+    accountHolderName: json["account_holder_name"] == null
+        ? null
+        : json["account_holder_name"],
+    cardNumber: json["card_number"] == null ? null : json["card_number"],
+    accountNumber: json["account_number"] == null
+        ? null
+        : json["account_number"],
+    shebaNumber: json["sheba_number"] == null ? null : json["sheba_number"],
+    notes: json["notes"] == null ? null : json["notes"],
+    accountDetails: json["account_details"] == null
+        ? null
+        : json["account_details"],
+    accountImage: json["account_image"] == null ? null : json["account_image"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "id": id,
+    "method_name": methodName,
+    "bank_name": bankName,
+    "account_holder_name": accountHolderName,
+    "card_number": cardNumber,
+    "account_number": accountNumber,
+    "sheba_number": shebaNumber,
+    "notes": notes,
+    "account_details": accountDetails,
+    "account_image": accountImage,
+  };
+}

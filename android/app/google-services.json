@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "705519624530",
+    "project_id": "afghannet",
+    "storage_bucket": "afghannet.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:705519624530:android:aeb7935ab0027e04805a8b",
+        "android_client_info": {
+          "package_name": "com.new_afghan.woosat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwoQ79stPPlhFB6CIOryTfuWiPdvq-ueE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
